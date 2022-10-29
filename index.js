@@ -24,6 +24,7 @@ function millisToMinutes(millis) {
     return minutes;
 }
 
+/*PUNTO DE ENTRADA*/
 function pageOnload() {
     fetchDataJSON()
     .then(jsonDataArray=>{
@@ -65,10 +66,13 @@ function generateFirstChart(elementId,chartLable,topFiveSpotifyData) {
     const labels = getAttributesFromArray(topFiveSpotifyData,'artistName');
     const data = {
         labels: labels,
-        datasets: [{
+        datasets: [{ 
           label: chartLable,
-          backgroundColor: 'rgb(255, 99, 132)',
-          borderColor: 'rgb(255, 99, 132)',
+          backgroundColor: [
+            '#F79256',
+            '#7D98A1',
+            '#EEF1EF'
+        ],
           data: getDataFromArray(topFiveSpotifyData),
         }]
       };
@@ -80,7 +84,7 @@ function generateFirstChart(elementId,chartLable,topFiveSpotifyData) {
             indexAxis: 'y',
             plugins: {
             legend: {
-                display:false
+                display:false,
             },
             tooltip: {
                 callbacks: {
